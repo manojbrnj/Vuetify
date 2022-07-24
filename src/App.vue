@@ -1,60 +1,39 @@
 <template>
   <v-app>
-    <v-app-bar
-      app
-      color="primary"
-      dark
-    >
-      <div class="d-flex align-center">
-        <v-img
-          alt="Vuetify Logo"
-          class="shrink mr-2"
-          contain
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-logo-dark.png"
-          transition="scale-transition"
-          width="40"
-        />
-
-        <v-img
-          alt="Vuetify Name"
-          class="shrink mt-1 hidden-sm-and-down"
-          contain
-          min-width="100"
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-name-dark.png"
-          width="100"
-        />
-      </div>
-
-      <v-spacer></v-spacer>
-
-      <v-btn
-        href="https://github.com/vuetifyjs/vuetify/releases/latest"
-        target="_blank"
-        text
-      >
-        <span class="mr-2">Latest Release</span>
-        <v-icon>mdi-open-in-new</v-icon>
-      </v-btn>
-    </v-app-bar>
-
-    <v-main>
-      <HelloWorld/>
-    </v-main>
+    <v-card width="400px" class="mx-auto mt-5">
+      <v-card-title><h1>HelloWorld</h1> </v-card-title>
+      <v-card-text>
+        <v-form>
+          <v-text-field
+            label="username"
+            prepend-icon="mdi-account"
+            background-color="white"
+          ></v-text-field>
+          <v-text-field
+            label="password"
+            :type="showPass ? 'text' : 'password'"
+            prepend-icon="mdi-lock"
+            :append-icon="showPass ? 'mdi-eye' : 'mdi-eye-off'"
+            background-color="white"
+            @click:append="showPass = !showPass"
+          ></v-text-field>
+          <v-card-actions>
+            <v-btn x-small color="success">Login</v-btn>
+            <v-spacer></v-spacer>
+            <v-btn x-small color="success">Register</v-btn>
+          </v-card-actions>
+        </v-form>
+      </v-card-text>
+    </v-card>
   </v-app>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld';
-
 export default {
-  name: 'App',
-
-  components: {
-    HelloWorld,
-  },
-
+  name: "App",
+  components: {},
   data: () => ({
-    //
+    showPass: false,
   }),
 };
 </script>
