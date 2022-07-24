@@ -4,12 +4,9 @@
       <v-toolbar-title>Vuetify Dashboard</v-toolbar-title>
       <v-spacer></v-spacer>
 
-      <router-link to="/">
-        <v-btn text> Home </v-btn>
-      </router-link>
-      <router-link to="/login">
-        <v-btn text> Login </v-btn>
-      </router-link>
+      <v-btn v-for="(item, index) in links" :to="item.url" text rounded>
+        {{ item.label }}
+      </v-btn>
     </v-app-bar>
     <!-- Login Module -->
     <v-main> <router-view></router-view> </v-main>
@@ -27,6 +24,21 @@
 export default {
   name: "App",
   components: {},
-  data: () => ({}),
+  data: () => ({
+    links: [
+      {
+        label: "Home",
+        url: "/",
+      },
+      {
+        label: "Login",
+        url: "/login",
+      },
+      {
+        label: "Dashboard",
+        url: "/dashboard",
+      },
+    ],
+  }),
 };
 </script>
